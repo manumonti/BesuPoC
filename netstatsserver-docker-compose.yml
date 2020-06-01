@@ -1,0 +1,48 @@
+version: '3.7'
+services:
+    netstatsserver:
+        container_name: netstats-network-server
+        image: alethio/ethstats-network-server:latest
+        restart: always
+        depends_on:
+            - deepstream
+        ports:
+            - 127.0.0.1:3000:3000
+            - 3030:3030
+            - 127.0.0.1:8888:8888
+        environment:
+            - NETWORK_ID=8377
+            - NETWORK_NAME=BesuPoC
+            - LITE=1
+            - LITE_DB_PERSIST=0
+            - LITE_API_PORT=3030
+            - APP_PORT=3000
+            - METRICS_PORT=8888
+            - DEEPSTREAM_HOST=deepstream
+        command: ["./bin/app.js", "-v"]
+    deepstream:
+        container_name: netstats-network-deepstream
+        image: deepstreamio/deepstream.io:3.2.2
+        restart: always
+        ports:
+            - 6020:6020
+    netstatsdashboard:
+        container_name: ethstats-network-dashboard
+        image: alethio/ethstats-network-dashboard:latest
+        restart: always
+        depends_on:
+            - netstatsserver
+        ports:
+            - 80:80
+        environment:
+            - NETSTATS_API_URL=http://192.168.43.125:3030
+            - DS_URL=192.168.43.125:6020
+            - DS_USER=frontend
+            - DS_PASS=
+    blockexplorer:
+        container_name: blockexplorer-server
+        image: alethio/ethereum-lite-explorer
+        ports:
+            - 8080:80
+        environment: 
+            - APP_NODE_URL=http://192.168.43.125:2001
