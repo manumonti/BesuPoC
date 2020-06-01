@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+    producernode:
+        container_name: producer-node
+        build:
+            context: .
+            dockerfile: Dockerfiles/ProducerNode.dockerfile
+        network_mode: "host"
+    consumernode:
+        container_name: consumer-node
+        build: 
+            context: .
+            dockerfile: Dockerfiles/ConsumerNode.dockerfile
+        network_mode: "host"
