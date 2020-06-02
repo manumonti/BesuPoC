@@ -1,14 +1,20 @@
 version: '3.7'
 services:    
-    netstatsclientcorrelator:
+    netstatsclientbetter:
+        container_name: netstats-client-better
+        image: alethio/ethstats-cli:latest
+        restart: always
+        command: --register --account-email manumonti@gmail.com --node-name betterNode --server-url http://localhost:3000 --client-url http://localhost:2001
+        network_mode: "host"
+    netstatsclientproducer:
         container_name: netstats-client-producer
         image: alethio/ethstats-cli:latest
         restart: always
-        command: --register --account-email manumonti@gmail.com --node-name producerNode --server-url http://localhost:3000 --client-url http://localhost:2001
+        command: --register --account-email manumonti@gmail.com --node-name producerNode --server-url http://localhost:3000 --client-url http://localhost:2002
         network_mode: "host"
-    netstatsclientdt:
+    netstatsclientconsumer:
         container_name: netstats-client-consumer
         image: alethio/ethstats-cli:latest
         restart: always
-        command: --register --account-email manumonti@gmail.com --node-name consumerNode --server-url http://localhost:3000 --client-url http://localhost:2002
+        command: --register --account-email manumonti@gmail.com --node-name consumerNode --server-url http://localhost:3000 --client-url http://localhost:2003
         network_mode: "host"

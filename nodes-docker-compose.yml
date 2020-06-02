@@ -1,5 +1,11 @@
 version: '3.7'
 services:
+    betternode:
+        container_name: better-node
+        build:
+            context: .
+            dockerfile: Dockerfiles/BetterNode.dockerfile
+        network_mode: "host"
     producernode:
         container_name: producer-node
         build:
