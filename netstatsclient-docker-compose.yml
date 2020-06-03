@@ -10,11 +10,11 @@ services:
         container_name: netstats-client-producer
         image: alethio/ethstats-cli:latest
         restart: always
-        command: --register --account-email manumonti@gmail.com --node-name producerNode --server-url http://localhost:3000 --client-url http://localhost:2002
+        command: --register --account-email manumonti@gmail.com --node-name producer1Node --server-url http://localhost:3000 --client-url http://localhost:2002
         network_mode: "host"
     netstatsclientconsumer:
         container_name: netstats-client-consumer
         image: alethio/ethstats-cli:latest
         restart: always
-        command: --register --account-email manumonti@gmail.com --node-name consumerNode --server-url http://localhost:3000 --client-url http://localhost:2003
+        command: --register --account-email manumonti@gmail.com --node-name producer2Node --server-url http://localhost:3000 --client-url http://localhost:2003
         network_mode: "host"

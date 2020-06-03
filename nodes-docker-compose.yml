@@ -6,15 +6,15 @@ services:
             context: .
             dockerfile: Dockerfiles/BetterNode.dockerfile
         network_mode: "host"
-    producernode:
-        container_name: producer-node
+    producer1node:
+        container_name: producer1-node
         build:
             context: .
-            dockerfile: Dockerfiles/ProducerNode.dockerfile
+            dockerfile: Dockerfiles/Producer1Node.dockerfile
         network_mode: "host"
-    consumernode:
-        container_name: consumer-node
+    producer2node:
+        container_name: producer2-node
         build: 
             context: .
-            dockerfile: Dockerfiles/ConsumerNode.dockerfile
+            dockerfile: Dockerfiles/Producer2Node.dockerfile
         network_mode: "host"
