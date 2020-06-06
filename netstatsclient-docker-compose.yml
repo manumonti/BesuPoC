@@ -6,14 +6,14 @@ services:
         restart: always
         command: --register --account-email manumonti@gmail.com --node-name betterNode --server-url http://localhost:3000 --client-url http://localhost:2001
         network_mode: "host"
-    netstatsclientproducer:
-        container_name: netstats-client-producer
+    netstatsclientproducer1:
+        container_name: netstats-client-producer1
         image: alethio/ethstats-cli:latest
         restart: always
         command: --register --account-email manumonti@gmail.com --node-name producer1Node --server-url http://localhost:3000 --client-url http://localhost:2002
         network_mode: "host"
-    netstatsclientconsumer:
-        container_name: netstats-client-consumer
+    netstatsclientproducer2:
+        container_name: netstats-client-producer2
         image: alethio/ethstats-cli:latest
         restart: always
         command: --register --account-email manumonti@gmail.com --node-name producer2Node --server-url http://localhost:3000 --client-url http://localhost:2003

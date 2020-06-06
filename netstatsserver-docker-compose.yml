@@ -35,8 +35,8 @@ services:
         ports:
             - 80:80
         environment:
-            - NETSTATS_API_URL=http://192.168.43.125:3030
-            - DS_URL=192.168.43.125:6020
+            - NETSTATS_API_URL=http://localhost:3030
+            - DS_URL=localhost:6020
             - DS_USER=frontend
             - DS_PASS=
     blockexplorer:
@@ -45,4 +45,4 @@ services:
         ports:
             - 8080:80
         environment: 
-            - APP_NODE_URL=http://192.168.43.125:2001
+            - APP_NODE_URL=http://localhost:2001
