@@ -18,19 +18,25 @@
   "alloc": {
         "999c40dE33361F21212F3D39A3c06944339f4310": {
           "privateKey": "a906559ffca51d98bb89eca8de06681201ab17b59069e14c20be8f9d88367a77",
-          "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+          "comment": "Bettergy account",
           "balance": "1000000000000000000000"
         },
         "A3971a14D4514E0E0Ba4ef1B65A977839F32431A": {
           "privateKey": "7bbae451622755a448d28e9477b07c559ea9eebe3ef9c3b2a36471ffbc26a4b9",
-          "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+          "comment": "Producer1 account",
           "balance": "1000000000000000000000"
         },
         "d6291a1c2C6B0ec947cE5Cc53407c34238a9BdEa": {
           "privateKey": "388aa8f20cb0f818d02573355c28ab7fa8e48f157dc69e55ae1f4e00a6314c1d",
-          "comment": "private key and this comment are ignored.  In a real chain, the private key should NOT be stored",
+          "comment": "Producer2 account",
+          "balance": "1000000000000000000000"
+        },
+        "E0cb661B3f3136b0d345CbB0F54eb0b011057EC2": {
+          "privateKey: "54EBD0E941936F034BA0EF8506ED82E523D5E8E30CFCEB63D70C9F99CC2241AE",
+          "comment": "Consumer1 account",
           "balance": "1000000000000000000000"
         }
+
   },
   "number":"0x0",
   "gasUsed":"0x0",
