@@ -8,7 +8,7 @@ services:
             - deepstream
         ports:
             - 127.0.0.1:3000:3000
-            - 3030:3030
+            - 127.0.0.1:3030:3030
             - 127.0.0.1:8888:8888
         environment:
             - NETWORK_ID=8377
@@ -36,7 +36,7 @@ services:
             - 80:80
         environment:
             - NETSTATS_API_URL=http://localhost:3030
-            - DS_URL=localhost:6020
+            - DS_URL=${IPServer}:6020
             - DS_USER=frontend
             - DS_PASS=
     blockexplorer:
@@ -45,4 +45,4 @@ services:
         ports:
             - 8080:80
         environment: 
-            - APP_NODE_URL=http://localhost:2001
+            - APP_NODE_URL=http://${IPServer}:2001
