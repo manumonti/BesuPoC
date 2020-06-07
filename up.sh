@@ -10,6 +10,6 @@ IPServer=$IP docker-compose --file netstatsserver-docker-compose.yml up --build 
 sleep 15s
 docker-compose --file netstatsclient-docker-compose.yml up --build -d
 
-echo "##################################"
-echo "Servers IP Address: $IP"
-echo "##################################"
+echo "####################################"
+echo " Servers IP Address: $IP"
+echo "####################################"
