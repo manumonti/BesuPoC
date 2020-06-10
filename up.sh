@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ "$1" != "localhost" ]; then
+if [ "$#" -eq "0" ]; then
     IP=$(curl ifconfig.me -s)
 else
     IP="$1"
