@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="web3.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        
+        function getPpa(ppaId) {
+
+            let contractAbi = [{"inputs":[{"internalType":"uint256","name":"_timestamp","type":"uint256"},{"internalType":"address","name":"_producer","type":"address"},{"internalType":"address","name":"_consumer","type":"address"},{"internalType":"uint256","name":"_price","type":"uint256"},{"internalType":"uint256","name":"_priceValidityTime","type":"uint256"},{"internalType":"uint256","name":"_deteriorationPercent","type":"uint256"},{"internalType":"uint256","name":"_energySurplusLimit","type":"uint256"},{"internalType":"uint256","name":"_energySurplusDiscount","type":"uint256"},{"internalType":"uint256","name":"_energyDeficitLimit","type":"uint256"},{"internalType":"uint256","name":"_deposit","type":"uint256"}],"name":"createNewPpa","outputs":[{"internalType":"uint256","name":"indexPpa","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_ppaIndex","type":"uint256"}],"name":"signPpa","outputs":[{"internalType":"enum PPA.PpaState","name":"state","type":"uint8"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"uint256","name":"_ppaIndex","type":"uint256"}],"name":"getPpa","outputs":[{"internalType":"enum PPA.PpaState","name":"ppaState","type":"uint8"},{"internalType":"uint256","name":"timestamp","type":"uint256"},{"internalType":"address","name":"producer","type":"address"},{"internalType":"address","name":"consumer","type":"address"},{"internalType":"uint256","name":"price","type":"uint256"},{"internalType":"uint256","name":"priceValidityTime","type":"uint256"},{"internalType":"uint256","name":"deteriorationPercent","type":"uint256"},{"internalType":"uint256","name":"energySurplusLimit","type":"uint256"},{"internalType":"uint256","name":"energySurplusDiscount","type":"uint256"},{"internalType":"uint256","name":"energyDeficitLimit","type":"uint256"},{"internalType":"uint256","name":"deposit","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_ppaIndex","type":"uint256"}],"name":"ppaState","outputs":[{"internalType":"enum PPA.PpaState","name":"state","type":"uint8"}],"stateMutability":"view","type":"function"}]
+            let contractByteCode = "0x60a060405234801561001057600080fd5b503373ffffffffffffffffffffffffffffffffffffffff1660808173ffffffffffffffffffffffffffffffffffffffff1660601b8152505060805160601c610ed261006f600039806102cb52806105d4528061081e5250610ed26000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806320a06788146100515780636c1d26891461013f578063832736e314610208578063c3decef214610258575b600080fd5b61007d6004803603602081101561006757600080fd5b81019080803590602001909291905050506102a8565b604051808c600481111561008d57fe5b60ff1681526020018b81526020018a73ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018973ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018881526020018781526020018681526020018581526020018481526020018381526020018281526020019b50505050505050505050505060405180910390f35b6101f2600480360361014081101561015657600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291908035906020019092919080359060200190929190803590602001909291908035906020019092919080359060200190929190803590602001909291905050506105d0565b6040518082815260200191505060405180910390f35b6102346004803603602081101561021e57600080fd5b810190808035906020019092919050505061080a565b6040518082600481111561024457fe5b60ff16815260200191505060405180910390f35b6102846004803603602081101561026e57600080fd5b810190808035906020019092919050505061098f565b6040518082600481111561029457fe5b60ff16815260200191505060405180910390f35b600080600080600080600080600080600080805490508c106102c957600080fd5b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16148061038c575060008c8154811061032b57fe5b90600052602060002090600b020160020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16145b80610400575060008c8154811061039f57fe5b90600052602060002090600b020160030160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16145b61040957600080fd5b60008c8154811061041657fe5b90600052602060002090600b020160000160009054906101000a900460ff169a5060008c8154811061044457fe5b90600052602060002090600b020160010154995060008c8154811061046557fe5b90600052602060002090600b020160020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16985060008c815481106104a657fe5b90600052602060002090600b020160030160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16975060008c815481106104e757fe5b90600052602060002090600b020160040154965060008c8154811061050857fe5b90600052602060002090600b020160050154955060008c8154811061052957fe5b90600052602060002090600b020160060154945060008c8154811061054a57fe5b90600052602060002090600b020160070154935060008c8154811061056b57fe5b90600052602060002090600b020160080154925060008c8154811061058c57fe5b90600052602060002090600b020160090154915060008c815481106105ad57fe5b90600052602060002090600b0201600a0154905091939597999b90929496989a50565b60007f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461062a57600080fd5b610632610e0b565b6040518061016001604052806000600481111561064b57fe5b81526020018d81526020018c73ffffffffffffffffffffffffffffffffffffffff1681526020018b73ffffffffffffffffffffffffffffffffffffffff1681526020018a815260200189815260200188815260200187815260200186815260200185815260200184815250905060008190806001815401808255809150506001900390600052602060002090600b020160009091909190915060008201518160000160006101000a81548160ff0219169083600481111561070857fe5b02179055506020820151816001015560408201518160020160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060608201518160030160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506080820151816004015560a0820151816005015560c0820151816006015560e082015181600701556101008201518160080155610120820151816009015561014082015181600a015550506001600080549050039150509a9950505050505050505050565b60008080549050821061081c57600080fd5b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614806108df57506000828154811061087e57fe5b90600052602060002090600b020160020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16145b806109535750600082815481106108f257fe5b90600052602060002090600b020160030160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16145b61095c57600080fd5b6000828154811061096957fe5b90600052602060002090600b020160000160009054906101000a900460ff169050919050565b6000808054905082106109a157600080fd5b600082815481106109ae57fe5b90600052602060002090600b020160020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161480610a82575060008281548110610a2157fe5b90600052602060002090600b020160030160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16145b610a8b57600080fd5b60006004811115610a9857fe5b60008381548110610aa557fe5b90600052602060002090600b020160000160009054906101000a900460ff166004811115610acf57fe5b1415610bd25760008281548110610ae257fe5b90600052602060002090600b020160020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415610b8c57600260008381548110610b5657fe5b90600052602060002090600b020160000160006101000a81548160ff02191690836004811115610b8257fe5b0217905550610bcd565b600160008381548110610b9b57fe5b90600052602060002090600b020160000160006101000a81548160ff02191690836004811115610bc757fe5b02179055505b610dd8565b60026004811115610bdf57fe5b60008381548110610bec57fe5b90600052602060002090600b020160000160009054906101000a900460ff166004811115610c1657fe5b148015610c8c575060008281548110610c2b57fe5b90600052602060002090600b020160030160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16145b15610cd657600360008381548110610ca057fe5b90600052602060002090600b020160000160006101000a81548160ff02191690836004811115610ccc57fe5b0217905550610dd7565b60016004811115610ce357fe5b60008381548110610cf057fe5b90600052602060002090600b020160000160009054906101000a900460ff166004811115610d1a57fe5b148015610d90575060008281548110610d2f57fe5b90600052602060002090600b020160020160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16145b15610dd657600360008381548110610da457fe5b90600052602060002090600b020160000160006101000a81548160ff02191690836004811115610dd057fe5b02179055505b5b5b60008281548110610de557fe5b90600052602060002090600b020160000160009054906101000a900460ff169050919050565b60405180610160016040528060006004811115610e2457fe5b815260200160008152602001600073ffffffffffffffffffffffffffffffffffffffff168152602001600073ffffffffffffffffffffffffffffffffffffffff16815260200160008152602001600081526020016000815260200160008152602001600081526020016000815260200160008152509056fea2646970667358221220cd91775aaf3e120640841d0a7bfbcf7c3c1588e1fe5464a46e014d029846c81b64736f6c63430006080033"
+            let contractAddress = "0xd6Bf260429be960933318605F4743ECB01EaE77f"
+
+            web3.eth.getAccounts().then(function (metamaskAddress) {
+                // contract instance
+                contract = new web3.eth.Contract(contractAbi, contractAddress)       
+                 
+                contract.methods.getPpa(ppaId).call({from: metamaskAddress[0]}).then(function(result) {
+                    console.log('ppa state: '+result.ppaState)
+                    console.log('timestamp: '+result.timestamp)
+                    console.log('producer address: '+result.producer)
+                    console.log('consumer address: '+result.consumer)
+                    console.log('price: '+result.price)
+                    console.log('price validity time: '+result.priceValidityTime)
+                    console.log('deterioration Percent: '+result.deteriorationPercent)
+                    console.log('energy surplus limit: '+result.energySurplusLimit)
+                    console.log('energy surplus discount: '+result.energySurplusDiscount)
+                    console.log('energy deficit limit: '+result.energyDeficitLimit)
+                    console.log('deposit: '+result.deposit)
+                })
+            })
+
+                
+        }
+
+        window.addEventListener('load', async () => {
+            // Modern dapp browsers...
+            if (window.ethereum) {
+                window.web3 = new Web3(ethereum);
+                try {
+                    // Request account access if needed
+                    await ethereum.enable();
+                    // Acccounts now exposed
+
+                    let ppaId = 0;
+                    getPpa(ppaId)
+                    
+                } catch (error) {
+                    // User denied account access...
+                    console.log(error)
+                }
+            } else {
+                console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+            }
+        });
+
+        
+
+    </script>
+
+
+</body>
+</html>
